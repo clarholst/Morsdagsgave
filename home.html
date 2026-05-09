@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Mors Dags Gave | Blomster & minder til Mor</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: linear-gradient(145deg, #fff9f0 0%, #ffe6e9 100%);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #4a2e2a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 80px 1fr 80px;
+      min-height: 100vh;
+    }
+
+    .side-flowers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 3rem;
+      gap: 2.2rem;
+      font-size: 2rem;
+      opacity: 0.65;
+      user-select: none;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .side-flowers span {
+      display: inline-block;
+      animation: sway 3s ease-in-out infinite;
+    }
+    .side-flowers span:nth-child(even)  { animation-delay: 1.5s; }
+    .side-flowers span:nth-child(3n)    { animation-delay: 0.7s; }
+    .side-flowers span:nth-child(4n)    { animation-delay: 2.1s; }
+
+    @keyframes sway {
+      0%,100% { transform: rotate(-8deg) translateY(0); }
+      50%      { transform: rotate(8deg) translateY(-7px); }
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 2rem 1rem 1rem;
+      border-radius: 4rem 4rem 3rem 3rem;
+      background: rgba(255,245,240,0.7);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 8px 20px rgba(231,148,135,0.15);
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #c44536, #f7a68e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #b55b48;
+      background: #fff0e6;
+      display: inline-block;
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      margin-top: 0.5rem;
+    }
+
+    .dato-blomst {
+      margin-top: 0.8rem;
+      font-size: 1.1rem;
+      color: #b96f5a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .dato-blomst span {
+      background: #f9e2d4;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+    }
+
+    .heart-message {
+      background: #fff6f0;
+      padding: 1.6rem;
+      border-radius: 48px;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: 0 12px 22px rgba(160,80,60,0.1);
+      border: 1px solid #ffded3;
+    }
+    .poem {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #9f5340;
+      margin-bottom: 0.8rem;
+    }
+
+    .galleri { margin: 2rem 0 1rem; text-align: center; }
+    .galleri h2 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #b1523b;
+      border-left: 5px solid #f3ac93;
+      border-right: 5px solid #f3ac93;
+      display: inline-block;
+      padding: 0 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px -10px rgba(0,0,0,0.18);
+      border: 1px solid #ffdfd0;
+    }
+
+    .card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fbe8e0;
+      object-fit: contain;
+    }
+
+    .card-caption {
+      padding: 1rem 0.8rem;
+      text-align: center;
+      font-weight: 600;
+      color: #a3513b;
+      font-size: 1rem;
+      border-top: 1px solid #ffe1d4;
+      background: #ffffffda;
+    }
+
+    .blomster-zone {
+      background: #fff2ea;
+      border-radius: 60px;
+      padding: 2rem 1.5rem;
+      margin: 2.5rem 0 1rem;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+
+    .flower-btn {
+      background: #e68a5e;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 90px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      box-shadow: 0 10px 0 #9f4a2c;
+      transform: translateY(-3px);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      color: white;
+      font-size: 1.4rem;
+    }
+    .flower-btn span { font-size: 2rem; }
+    .flower-btn:active {
+      transform: translateY(5px);
+      box-shadow: 0 4px 0 #9f4a2c;
+    }
+
+    .flower-counter {
+      margin-top: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #b74127;
+      background: #ffe1d4;
+      display: inline-block;
+      padding: 0.3rem 1.8rem;
+      border-radius: 60px;
+    }
+
+    .blomst-besked {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      min-height: 60px;
+      color: #7f4a39;
+      background: rgba(255,240,230,0.8);
+      border-radius: 36px;
+      padding: 0.8rem 1.2rem;
+    }
+
+    /* Bouquet */
+    .buket-section {
+      background: linear-gradient(135deg, #fff0f5, #fff8e8);
+      border-radius: 48px;
+      padding: 2rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(160,80,60,0.12);
+      border: 2px solid #ffd6c8;
+    }
+    .buket-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #b1523b;
+      margin-bottom: 1rem;
+    }
+    #bouquetCanvas {
+      border-radius: 24px;
+      background: linear-gradient(180deg, #e8f5e8 0%, #f0ffe8 60%, #c8e8a0 100%);
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    .buket-hint {
+      font-size: 0.9rem;
+      color: #a06050;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* Mini game */
+    .minigame-section {
+      background: linear-gradient(135deg, #fff5f0, #f0e8ff);
+      border-radius: 48px;
+      padding: 2rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(120,60,160,0.1);
+      border: 2px solid #e8c8f8;
+    }
+    .game-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #7a3b8c;
+      margin-bottom: 0.4rem;
+    }
+    .game-desc {
+      font-size: 1rem;
+      color: #8a5a9a;
+      margin-bottom: 1rem;
+    }
+    #gameCanvas {
+      border-radius: 20px;
+      border: 3px solid #d4a0e8;
+      display: block;
+      margin: 0 auto;
+      cursor: crosshair;
+      max-width: 100%;
+      background: linear-gradient(180deg, #fce8ff 0%, #e8d0ff 100%);
+    }
+    .game-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .game-btn {
+      background: #9b5eb8;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #6a3a80;
+      transform: translateY(-2px);
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .game-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 3px 0 #6a3a80;
+    }
+    #gameScore {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #7a3b8c;
+      background: #f0d8ff;
+      display: inline-block;
+      padding: 0.3rem 1.4rem;
+      border-radius: 60px;
+      margin-top: 0.8rem;
+    }
+
+    .instructions {
+      background: #fff2e8;
+      border-radius: 28px;
+      padding: 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border-left: 6px solid #f3ac93;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding: 1.8rem;
+      font-size: 0.9rem;
+      color: #b46550;
+      border-top: 2px dashed #ffcfbe;
+    }
+
+    /* Falling petals */
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      font-size: 1.5rem;
+      animation: petalFall linear forwards;
+      z-index: 999;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 700px) {
+      .page-wrap { grid-template-columns: 28px 1fr 28px; }
+      .side-flowers { font-size: 1.2rem; gap: 1.3rem; padding-top: 2rem; }
+      h1 { font-size: 2.2rem; }
+      .subhead { font-size: 1.1rem; }
+      .grid { gap: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <div class="side-flowers" aria-hidden="true">
+    <span>🌸</span><span>🌷</span><span>🌺</span><span>🌼</span>
+    <span>🌻</span><span>🌹</span><span>💐</span><span>🌸</span>
+    <span>🌷</span><span>🌺</span><span>🌼</span><span>🌻</span>
+  </div>
+
+  <div class="container">
+
+    <div class="hero">
+      <h1>🌸 Mors Dags Gave 🌸</h1>
+      <div class="subhead">Til dig, mor: tak for alle de gode oplevelser</div>
+      <div class="dato-blomst">
+        <span>🌷 Maj 2026 🌷</span>
+        <span>💐 Tak for alle vores eventyr 💐</span>
+      </div>
+    </div>
+
+    <div class="heart-message">
+      <div class="poem">"Fra Aarhus Tivoli Friheden til tyske skove eller maling af keramik"</div>
+      <p style="font-size:1.05rem;">Kære mor, jeg har samlet seks billeder af os her. Hvert billede viser vores fælles, hyggelige oplevelser.</p>
+    </div>
+
+    <div class="galleri" style="text-align:center;">
+      <h2>📸 6 udvalgte minder 📸</h2>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <img class="card-img" src="img_1.jpg" alt="Min mor i Aarhus med candyfloss i Tivoli Friheden">
+        <div class="card-caption">🍭 Candyfloss i Tivoli Friheden 🍭</div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="img_2.jpg" alt="Min mor og jeg i Berlin">
+        <div class="card-caption">🥨 I Berlin 🥨</div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="img_3.jpg" alt="Min mor og jeg i en skov i Tyskland">
+        <div class="card-caption">🍃 En eller anden tysk skov 🍃</div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="img_4.jpg" alt="Mig, min mor og min tvillingebror i Tyskland">
+        <div class="card-caption">💕 Tyskland 💕</div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="img_5.jpg" alt="Min mor og jeg på Færøerne">
+        <div class="card-caption">⛰️ Færøerne ⛰️</div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="img_6.jpg" alt="Min mor maler keramik">
+        <div class="card-caption">🎨 Keramikmaleri 🎨</div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <strong>🌼 En lille hilsen:</strong> Tryk på blomsterne nedenfor for at samle din buket, og prøv minispillet nederst! 💐
+    </div>
+
+    <div class="blomster-zone">
+      <div style="font-size:1.4rem;margin-bottom:8px;">🌼 Giv en blomst til Mor 🌼</div>
+      <button class="flower-btn" id="flowerButton">
+        <span>🌸</span> Klik her for at sende en blomst
+      </button>
+      <div class="flower-counter" id="flowerCounter">🌻 Blomster givet: 0</div>
+      <div class="blomst-besked" id="blomstBesked">
+        Hver blomst er et lille "tak" for alle vores oplevelser sammen. Tryk på knappen!
+      </div>
+    </div>
+
+    <div class="buket-section">
+      <div class="buket-title">💐 Din virtuelle buket 💐</div>
+      <canvas id="bouquetCanvas" width="480" height="340"></canvas>
+      <div class="buket-hint">Buketten vokser for hver blomst du giver! 🌷</div>
+    </div>
+
+    <div class="minigame-section">
+      <div class="game-title">🦋 Fang sommerfuglene! 🦋</div>
+      <div class="game-desc">Klik på sommerfuglene inden de flyver væk! 💜</div>
+      <canvas id="gameCanvas" width="480" height="300"></canvas>
+      <div id="gameScore">🦋 Point: 0 | Tid: 30s</div>
+      <div class="game-controls">
+        <button class="game-btn" id="startGameBtn">▶ Start spil</button>
+        <button class="game-btn" id="resetGameBtn">↺ Genstart</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>✨ Fra Clara ✨</p>
+      <p style="margin-top:8px;">🌷 Mors dag 2026, vores minder lever for altid 🌷</p>
+    </footer>
+
+  </div>
+
+  <div class="side-flowers" aria-hidden="true">
+    <span>🌺</span><span>🌼</span><span>🌸</span><span>🌻</span>
+    <span>🌷</span><span>🌹</span><span>💐</span><span>🌺</span>
+    <span>🌼</span><span>🌸</span><span>🌻</span><span>🌷</span>
+  </div>
+
+</div>
+
+<script>
+/* ── Falling petals ── */
+const petalEmojis = ['🌸','🌷','🌺','🌼','🌻','🌹','💐'];
+function spawnPetal() {
+  const p = document.createElement('span');
+  p.className = 'petal';
+  p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+  p.style.left = Math.random() * 95 + 'vw';
+  p.style.top = '-30px';
+  const dur = 2.5 + Math.random() * 2;
+  p.style.animationDuration = dur + 's';
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), dur * 1000 + 200);
+}
+
+/* ── Flower button ── */
+let blomsterTæller = 0;
+const flowerBtn = document.getElementById('flowerButton');
+const flowerSpan = document.getElementById('flowerCounter');
+const beskedDiv = document.getElementById('blomstBesked');
+
+const blomsterBeskeder = [
+  "🌷 En forårstulipan til dig, mor, lige så skarp som vores tur i Berlin! 🌷",
+  "🌻 En solsikke, ligesom lyset fra dit smil i den tyske skov 🌻",
+  "🌺 En hibiscus, minder om vores farvestrålende dage på Færøerne 🌺",
+  "🌸 Et kirsebærblomst, fordi du får mig til at føle mig hjemme hver dag 🌸",
+  "🌼 En marguerit, præcis som vores hyggestunder med keramik 🌼",
+  "💐 En buket vilde blomster, tak for Tivoli Friheden og candyfloss-minderne! 💐",
+  "🌿 En lavendel, for din rolige og varme omsorg 🌿",
+  "🌹 En rød rose, for alt det du altid hjælper os med 🌹",
+  "✨ En magisk blomst for hvert eventyr vi har delt ✨"
+];
+
+function givBlomst() {
+  blomsterTæller++;
+  flowerSpan.innerHTML = `🌻 Blomster givet: ${blomsterTæller}`;
+
+  let besked = blomsterBeskeder[Math.floor(Math.random() * blomsterBeskeder.length)];
+  if (blomsterTæller === 1)  besked = "🌷 Første blomst til mor på Mors dag! 🌷";
+  if (blomsterTæller === 7)  besked = "🌼 7 blomster, én for hver dag i ugen. 🌼";
+  if (blomsterTæller === 12) besked = "🎁 12 blomster & en virtuel krammer!";
+  if (blomsterTæller >= 20 && blomsterTæller % 10 === 0) besked = "💐 WOW! Mange blomster! 💐";
+
+  beskedDiv.innerHTML = `💕 ${besked} 💕`;
+
+  const count = Math.min(blomsterTæller + 3, 14);
+  for (let i = 0; i < count; i++) setTimeout(spawnPetal, i * 70);
+
+  const zone = document.querySelector('.blomster-zone');
+  zone.style.transition = 'background 0.2s';
+  zone.style.background = '#ffe7dc';
+  setTimeout(() => { zone.style.background = '#fff2ea'; }, 300);
+
+  drawBouquet();
+}
+flowerBtn.addEventListener('click', givBlomst);
+
+/* ── Virtual Bouquet ── */
+const bCanvas = document.getElementById('bouquetCanvas');
+const bCtx = bCanvas.getContext('2d');
+let bouquetAnimFrame = null;
+
+(function scale() {
+  const dpr = window.devicePixelRatio || 1;
+  const w = bCanvas.width, h = bCanvas.height;
+  bCanvas.width = w * dpr; bCanvas.height = h * dpr;
+  bCanvas.style.width = w + 'px'; bCanvas.style.height = h + 'px';
+  bCtx.scale(dpr, dpr);
+  bCanvas._w = w; bCanvas._h = h;
+})();
+
+const bouquetList = ['🌸','🌷','🌺','🌼','🌻','🌹','💐','🌷','🌸','🌼','🌺','🌻'];
+
+function drawBouquet() {
+  if (bouquetAnimFrame) cancelAnimationFrame(bouquetAnimFrame);
+  const W = bCanvas._w, H = bCanvas._h;
+  bCtx.clearRect(0, 0, W, H);
+  const count = Math.min(blomsterTæller, bouquetList.length);
+
+  if (count === 0) {
+    bCtx.font = '1rem Segoe UI, sans-serif';
+    bCtx.fillStyle = '#c48974';
+    bCtx.textAlign = 'center';
+    bCtx.textBaseline = 'middle';
+    bCtx.fillText('Giv blomster for at bygge buketten! 🌼', W/2, H/2);
+    return;
+  }
+
+  const cx = W / 2;
+  const stemBase = H - 18;
+  const spread = Math.min(count * 22, 200);
+
+  bCtx.lineWidth = 4;
+  for (let i = 0; i < count; i++) {
+    const frac = count === 1 ? 0.5 : i / (count - 1);
+    const x = cx + (frac - 0.5) * spread;
+    const yTop = H * 0.20 + Math.pow(Math.abs(frac - 0.5) * 2, 1.5) * 70;
+
+    const grad = bCtx.createLinearGradient(x, stemBase, x, yTop);
+    grad.addColorStop(0, '#4a7c3f');
+    grad.addColorStop(1, '#7bc55a');
+    bCtx.strokeStyle = grad;
+    bCtx.beginPath();
+    bCtx.moveTo(cx, stemBase - 8);
+    bCtx.quadraticCurveTo(cx + (x - cx) * 0.5, H * 0.62, x, yTop + 20);
+    bCtx.stroke();
+
+    if (i % 2 === 0 && count > 2) {
+      bCtx.save();
+      bCtx.translate(cx + (x - cx) * 0.5, H * 0.60);
+      bCtx.rotate(i % 4 === 0 ? 0.45 : -0.45);
+      bCtx.fillStyle = '#5aaa3a';
+      bCtx.beginPath();
+      bCtx.ellipse(0, 0, 11, 5, 0, 0, Math.PI * 2);
+      bCtx.fill();
+      bCtx.restore();
+    }
+
+    const fontSize = Math.max(22, 38 - count * 1.5);
+    bCtx.font = `${fontSize}px serif`;
+    bCtx.textAlign = 'center';
+    bCtx.textBaseline = 'middle';
+    bCtx.fillText(bouquetList[i], x, yTop);
+  }
+
+  if (count >= 3) {
+    bCtx.font = '30px serif';
+    bCtx.textAlign = 'center';
+    bCtx.fillText('🎀', cx, stemBase - 2);
+  }
+
+  if (count >= bouquetList.length) {
+    const t = Date.now() / 600;
+    for (let s = 0; s < 8; s++) {
+      const sx = cx + Math.cos(t + s * Math.PI / 4) * 110;
+      const sy = H * 0.12 + Math.sin(t * 1.2 + s) * 35;
+      bCtx.font = '16px serif';
+      bCtx.fillText('✨', sx, sy);
+    }
+    bouquetAnimFrame = requestAnimationFrame(drawBouquet);
+  }
+}
+drawBouquet();
+
+/* ── Butterfly mini game ── */
+const gCanvas = document.getElementById('gameCanvas');
+const gCtx = gCanvas.getContext('2d');
+const scoreEl = document.getElementById('gameScore');
+const startBtn = document.getElementById('startGameBtn');
+const resetBtn = document.getElementById('resetGameBtn');
+
+(function scaleG() {
+  const dpr = window.devicePixelRatio || 1;
+  const w = gCanvas.width, h = gCanvas.height;
+  gCanvas.width = w * dpr; gCanvas.height = h * dpr;
+  gCanvas.style.width = w + 'px'; gCanvas.style.height = h + 'px';
+  gCtx.scale(dpr, dpr);
+  gCanvas._w = w; gCanvas._h = h;
+})();
+
+let gameRunning = false, gameScore = 0, gameTime = 30;
+let butterflies = [], gameLoop = null, timerLoop = null;
+const bfEmojis = ['🦋','🌸','🌼','🌺','⭐','💜','🌷','🦄'];
+
+function newBF() {
+  const W = gCanvas._w, H = gCanvas._h;
+  return {
+    x: Math.random() * (W - 60) + 30,
+    y: Math.random() * (H - 60) + 30,
+    vx: (Math.random() - 0.5) * 1.6,
+    vy: (Math.random() - 0.5) * 1.6,
+    emoji: bfEmojis[Math.floor(Math.random() * bfEmojis.length)],
+    size: 28 + Math.random() * 18,
+    life: 3500 + Math.random() * 3000,
+    born: performance.now(),
+    alpha: 1,
+    wobble: Math.random() * Math.PI * 2,
+    wobbleSpeed: 0.04 + Math.random() * 0.04,
+  };
+}
+
+function spawnBF() {
+  if (!gameRunning) return;
+  butterflies.push(newBF());
+  setTimeout(spawnBF, 500 + Math.random() * 900);
+}
+
+function drawGame() {
+  if (!gameRunning) return;
+  const W = gCanvas._w, H = gCanvas._h;
+  gCtx.clearRect(0, 0, W, H);
+  const now = performance.now();
+
+  for (let i = butterflies.length - 1; i >= 0; i--) {
+    const b = butterflies[i];
+    const age = now - b.born;
+    if (age > b.life - 600) b.alpha = Math.max(0, (b.life - age) / 600);
+    if (b.alpha <= 0) { butterflies.splice(i, 1); continue; }
+
+    b.wobble += b.wobbleSpeed;
+    b.x += b.vx + Math.sin(b.wobble) * 0.6;
+    b.y += b.vy + Math.cos(b.wobble * 0.7) * 0.6;
+    if (b.x < 10 || b.x > W - 10) b.vx *= -1;
+    if (b.y < 10 || b.y > H - 10) b.vy *= -1;
+    b.x = Math.max(10, Math.min(W - 10, b.x));
+    b.y = Math.max(10, Math.min(H - 10, b.y));
+
+    gCtx.save();
+    gCtx.globalAlpha = b.alpha;
+    gCtx.font = `${b.size}px serif`;
+    gCtx.textAlign = 'center';
+    gCtx.textBaseline = 'middle';
+    const bob = 1 + Math.sin(b.wobble * 2) * 0.06;
+    gCtx.translate(b.x, b.y);
+    gCtx.scale(bob, bob);
+    gCtx.fillText(b.emoji, 0, 0);
+    gCtx.restore();
+  }
+
+  gCtx.font = 'bold 15px Segoe UI, sans-serif';
+  gCtx.fillStyle = 'rgba(90,30,110,0.45)';
+  gCtx.textAlign = 'left';
+  gCtx.textBaseline = 'top';
+  gCtx.fillText(`💜 ${gameScore} point`, 10, 10);
+
+  gameLoop = requestAnimationFrame(drawGame);
+}
+
+function updateScore() {
+  scoreEl.textContent = `🦋 Point: ${gameScore} | Tid: ${gameTime}s`;
+}
+
+function startGame() {
+  if (gameRunning) return;
+  gameRunning = true; gameScore = 0; gameTime = 30; butterflies = [];
+  updateScore();
+  startBtn.disabled = true;
+  spawnBF(); spawnBF();
+  gameLoop = requestAnimationFrame(drawGame);
+  timerLoop = setInterval(() => {
+    gameTime--;
+    updateScore();
+    if (gameTime <= 0) endGame();
+  }, 1000);
+}
+
+function endGame() {
+  gameRunning = false;
+  clearInterval(timerLoop);
+  cancelAnimationFrame(gameLoop);
+  startBtn.disabled = false;
+
+  const W = gCanvas._w, H = gCanvas._h;
+  gCtx.clearRect(0, 0, W, H);
+  gCtx.fillStyle = 'rgba(248,225,255,0.96)';
+  gCtx.beginPath();
+  gCtx.roundRect(W/2 - 175, H/2 - 85, 350, 170, 26);
+  gCtx.fill();
+
+  gCtx.textAlign = 'center';
+  gCtx.fillStyle = '#7a3b8c';
+  gCtx.font = 'bold 22px Segoe UI, sans-serif';
+  gCtx.textBaseline = 'middle';
+  gCtx.fillText('🎉 Spillet er slut! 🎉', W/2, H/2 - 40);
+
+  let msg = gameScore >= 20 ? `WOW! ${gameScore} point! Mor ville være stolt! 🌟`
+          : gameScore >= 10 ? `Flot! ${gameScore} sommerfugle fanget! 🦋`
+          :                   `${gameScore} point, prøv igen! 💜`;
+
+  gCtx.font = '17px Segoe UI, sans-serif';
+  gCtx.fillStyle = '#9b5eb8';
+  gCtx.fillText(msg, W/2, H/2 + 5);
+  gCtx.font = '13px Segoe UI, sans-serif';
+  gCtx.fillStyle = '#b080cc';
+  gCtx.fillText('Tryk "Genstart" for at spille igen!', W/2, H/2 + 40);
+
+  scoreEl.textContent = `🦋 Slutscore: ${gameScore} point`;
+}
+
+function resetGame() {
+  gameRunning = false;
+  clearInterval(timerLoop);
+  cancelAnimationFrame(gameLoop);
+  butterflies = []; gameScore = 0; gameTime = 30;
+  startBtn.disabled = false;
+  updateScore();
+  const W = gCanvas._w, H = gCanvas._h;
+  gCtx.clearRect(0, 0, W, H);
+  gCtx.textAlign = 'center';
+  gCtx.textBaseline = 'middle';
+  gCtx.font = '16px Segoe UI, sans-serif';
+  gCtx.fillStyle = '#9b5eb8';
+  gCtx.fillText('Tryk "Start spil" for at begynde! 🦋', W/2, H/2);
+}
+
+gCanvas.addEventListener('click', e => {
+  if (!gameRunning) return;
+  const r = gCanvas.getBoundingClientRect();
+  const mx = (e.clientX - r.left) * (gCanvas._w / r.width);
+  const my = (e.clientY - r.top)  * (gCanvas._h / r.height);
+  for (let i = butterflies.length - 1; i >= 0; i--) {
+    const b = butterflies[i];
+    if (Math.hypot(mx - b.x, my - b.y) < b.size * 0.85) {
+      butterflies.splice(i, 1);
+      gameScore++;
+      updateScore();
+      spawnPetal();
+      break;
+    }
+  }
+});
+
+startBtn.addEventListener('click', startGame);
+resetBtn.addEventListener('click', resetGame);
+resetGame();
+</script>
+</body>
+</html>
